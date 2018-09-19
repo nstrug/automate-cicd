@@ -1,6 +1,6 @@
 ---
 # Change the host according to your Ansible inventory.
-- hosts: *
+- hosts: all
   vars:
     apache_listen_ip: "*"
     apache_listen_port: 80
