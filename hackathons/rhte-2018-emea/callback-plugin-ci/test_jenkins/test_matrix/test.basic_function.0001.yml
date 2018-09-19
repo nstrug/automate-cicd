@@ -30,9 +30,9 @@
     - name: Check we are correctly registered in forward DNS
       fail:
         msg: "The system is not correctly registered in forward DNS"
-      when: forward_host_out.stdout != {{ ansible_all_ipv4_addresses[0] }}
+      when: forward_host_out.stdout != ansible_all_ipv4_addresses[0]
 
     - name: Check we are correctly registered in reverse DNS
       fail:
         msg: "The system is not correctly registered in reverse DNS"
-      when: reverse_host_out.stdout != {{ ansible_fqdn }}
+      when: reverse_host_out.stdout != ansible_fqdn
