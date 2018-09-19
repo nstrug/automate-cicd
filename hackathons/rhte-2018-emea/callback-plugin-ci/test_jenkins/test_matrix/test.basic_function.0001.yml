@@ -20,12 +20,16 @@
         name: bind-utils
         state: latest
 
-    - command: host "{{ ansible_fqdn }}"
+    - shell: host "{{ ansible_fqdn }}" | awk '{print $NF}'
       register: forward_host_out
 
-    - command: host "{{ ansible_all_ipv4_addresses[0] }}"
+    - shell: host "{{ ansible_all_ipv4_addresses[0] }}" | awk '{print $NF}' | sed s/.$//
       register: reverse_host_out
 
     - name: Check we are correctly registered in forward DNS
       debug:
         var: forward_host_out
+
+    - name: Check we are correctly registered in reverse DNS
+      debug:
+        var: reverse_host_out
