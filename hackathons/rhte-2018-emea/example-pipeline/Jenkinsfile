@@ -10,19 +10,19 @@ pipeline {
 
         stage('Syntax Check') {
             steps {
-                sh  "ansible-playbook -i app1, hackathons/rhte-2018-emea/playbook-ansible-role-banner.yaml --syntax-check"
+                sh  "ansible-playbook -i app1.b800.internal hackathons/rhte-2018-emea/playbook-ansible-role-banner.yaml --syntax-check"
             }
         }
 
         stage('Dry run') {
             steps {
-                sh  "ansible-playbook -u ec2-user -i app1 hackathons/rhte-2018-emea/playbook-ansible-role-banner.yaml --check"
+                sh  "ansible-playbook -u ec2-user -i app1.b800.internal hackathons/rhte-2018-emea/playbook-ansible-role-banner.yaml --check"
             }
         }
 
         stage('Execute Playbook') {
             steps {
-                sh  "ansible-playbook -u ec2-user -i app1, hackathons/rhte-2018-emea/playbook-ansible-role-banner.yaml"
+                sh  "ansible-playbook -u ec2-user -i app1.b800.internal hackathons/rhte-2018-emea/playbook-ansible-role-banner.yaml"
             }
         }
     }
