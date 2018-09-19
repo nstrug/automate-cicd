@@ -23,10 +23,9 @@
     - command: host "{{ ansible_fqdn }}"
       register: forward_host_out
 
-    - command: host "{{ ansible_all.ipv4_addresses[0] }}"
+    - command: host "{{ ansible_all_ipv4_addresses[0] }}"
       register: reverse_host_out
 
     - name: Check we are correctly registered in forward DNS
       debug:
         var: forward_host_out
-        
